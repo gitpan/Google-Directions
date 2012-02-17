@@ -40,6 +40,7 @@
             "Moose::Util::TypeConstraints" : 0,
             "MooseX::Aliases" : 0,
             "MooseX::Params::Validate" : 0,
+            "Test::Mock::LWP::Dispatch" : 0,
             "Test::More" : 0,
             "Try::Tiny" : 0,
             "URL::Encode" : 0
@@ -56,5 +57,5 @@
          "url" : "https://github.com/robin13/Google-Directions"
       }
    },
-   "version" : "0.03"
+   "version" : "0.04"
 }

@@ -1,6 +1,8 @@
 package Google::Directions::Response::Step;
 use Moose;
 use Google::Directions::Types qw/:all/;
+use Google::Directions::Response::Coordinates;
+use Google::Directions::Response::Polyline;
 
 =head1 NAME
 
@@ -56,23 +58,23 @@ has 'duration'      => ( is => 'ro', isa => ValueFromHashRef,
     coerce      => 1, 
     required    => 1,
     );
-has 'end_address'   => ( is => 'ro', isa => Str );
-has 'end_location'  => ( is => 'ro', isa => Coordinates,
+has 'end_address'   => ( is => 'ro', isa => 'Str' );
+has 'end_location'  => ( is => 'ro', isa => CoordinatesClass,
     coerce      => 1,
     required    => 1,
     );
 
-has 'start_address'   => ( is => 'ro', isa => Str );
-has 'start_location'  => ( is => 'ro', isa => Coordinates,
+has 'start_address'   => ( is => 'ro', isa => 'Str' );
+has 'start_location'  => ( is => 'ro', isa => CoordinatesClass,
     coerce      => 1,
     required    => 1,
     );
 
-has 'html_instructions' => ( is => 'ro', isa => Str );
+has 'html_instructions' => ( is => 'ro', isa => 'Str' );
 
 has 'travel_mode'       => ( is => 'ro', isa => TravelMode );
 
-has 'polyline'          => ( is => 'ro', isa => Polyline,
+has 'polyline'          => ( is => 'ro', isa => PolylineClass,
     coerce  => 1,
     );
 
