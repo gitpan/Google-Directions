@@ -18,7 +18,9 @@ no_index:
     - t
     - inc
 requires:
+  Cache::FastMmap: 0
   Carp: 0
+  Digest::SHA: 0
   Encode: 0
   JSON: 0
   LWP::UserAgent: 0
@@ -28,6 +30,7 @@ requires:
   MooseX::Params::Validate: 0
   MooseX::Types: 0
   MooseX::Types::Moose: 0
+  MooseX::WithCache: 0
   Test::Mock::LWP::Dispatch: 0
   Test::More: 0
   Try::Tiny: 0
@@ -36,4 +39,4 @@ resources:
   bugtracker: https://github.com/robin13/Google-Directions/issues
   homepage: https://github.com/robin13/Google-Directions
   repository: https://github.com/robin13/Google-Directions
-version: 0.06
+version: 0.07
