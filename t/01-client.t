@@ -1,9 +1,10 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More tests => 11;
 use Test::Mock::LWP::Dispatch;
 use Cache::FastMmap;
+use Digest::SHA qw/sha256_hex/;
 
 BEGIN {
     use_ok( 'Google::Directions::Client' ) || print "Bail out!\n";
@@ -79,3 +80,13 @@ ok( $first_leg->start_address eq 'Theresienstraße 100, 80333 Munich, Germany',
 ok( $first_leg->end_address eq 'Schellingstraße 130, 80797 Munich, Germany',
     'end address transformed correctly' );
 
+# Get the polyline and see if it's good
+my $polyline = '';
+foreach my $step ( @{ $first_leg->steps } ){
+    foreach my $point( @{ $step->polyline->points  } ){
+        $polyline .= sprintf "%f,%f\n", $point->lng, $point->lat; 
+    }
+}
+# printf "SHA: %s\n", sha256_hex( $polyline );
+ok( sha256_hex( $polyline ) eq 'de64d27aa7902b4c3b4b91a65a21b27188fb5779434c19a8ed6326ede281055b',
+    'polyline ok' );
